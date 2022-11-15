@@ -28,7 +28,7 @@ def branch_path(param):
 
 
 def get_data():
-    branch = input("ingresa path de la rama en Bitbucket:\n")
+    branch = input("ingresa path de la rama en Bitbucket:(opcional)\n")
     branch = branch_path(branch)
     print("\n")
     print("Ingresa el git diff copiado finalizando con un Ctrl + D\n")

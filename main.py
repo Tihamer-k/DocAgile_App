@@ -9,7 +9,7 @@ component_type = []
 component_status = []
 component_path = []
 branch_path_component = []
-out_path = "./doc_agil/prueba2.xlsx"
+out_path = f"./{out_path}/{output_filename}.xlsx"
 
 def format_datatype(param):
     res = ""
@@ -28,7 +28,13 @@ def branch_path(param):
 
 
 def get_data():
-    branch = input("ingresa path de la rama en Bitbucket:(opcional)\n")
+    output_filename = input("Indica el nombre del archivo de salida:\n")
+    if output_filename == "":
+        output_filename = "nuevo_doc_agil"
+    out_path = input("Ingresa la ruta donde guardarás el archivo:\n")
+    if out_path == "":
+        out_path = "doc_agil"
+    branch = input("ingresa path de la rama en Bitbucket (opcional):\n")
     branch = branch_path(branch)
     print("\n")
     print("Ingresa el git diff copiado finalizando con un Ctrl + D\n")

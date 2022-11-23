@@ -1,6 +1,7 @@
 import sys
 import pandas as pd
 from pandas import ExcelWriter
+import re
 
 space = " " * 7
 diff_data = []
@@ -9,7 +10,7 @@ component_type = []
 component_status = []
 component_path = []
 branch_path_component = []
-out_path = f"./{out_path}/{output_filename}.xlsx"
+
 
 def format_datatype(param):
     res = ""
@@ -27,13 +28,33 @@ def branch_path(param):
     return res
 
 
-def get_data():
+def valid_out_path(param):
+    return re.search("^C:..\\w", param)
+
+
+def final_out_path(out_path, output_filename):
+    x = False
+    if out_path == "doc_agil":
+        return f"./{out_path}/{output_filename}.xlsx"
+    else:
+        while not x:
+            data = valid_out_path(out_path)
+            if data:
+                return f"{out_path}/{output_filename}.xlsx"
+            else:
+                print("¡Formato de ruta no es correcto!")
+                out_path = input("Ingresa la ruta donde guardarás el archivo:\n")
+
+
+
+def get_and_set_data():
     output_filename = input("Indica el nombre del archivo de salida:\n")
     if output_filename == "":
         output_filename = "nuevo_doc_agil"
     out_path = input("Ingresa la ruta donde guardarás el archivo:\n")
     if out_path == "":
         out_path = "doc_agil"
+    out_path = final_out_path(out_path, output_filename)
     branch = input("ingresa path de la rama en Bitbucket (opcional):\n")
     branch = branch_path(branch)
     print("\n")
@@ -61,9 +82,10 @@ def get_data():
         component_status.append({'Estado': estado})
         component_path.append({'Ruta': ruta})
         branch_path_component.append({'URL rama': branch})
+        excel_writer(out_path)
 
 
-def excel_writer():
+def excel_writer(out_path):
     # print(diff_data)
     # df = pd.DataFrame(diff_data)
     df = pd.DataFrame(component)
@@ -71,16 +93,18 @@ def excel_writer():
     df2 = pd.DataFrame(component_status)
     df3 = pd.DataFrame(component_path)
     df4 = pd.DataFrame(branch_path_component)
-    writer = ExcelWriter(out_path, engine=None)
-    df.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=2)
-    df1.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=5)
-    df2.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=7)
-    df3.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=9)
-    df4.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=15)
-    writer.save()
-    print("¡Data guardada en el archivo!")
+    try:
+        writer = ExcelWriter(out_path, engine=None)
+        df.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=2)
+        df1.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=5)
+        df2.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=7)
+        df3.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=9)
+        df4.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=15)
+        writer.save()
+        print("¡Data guardada en el archivo!")
+    except():
+        print("Problema guardando la data")
 
 
 if __name__ == '__main__':
-    get_data()
-    excel_writer()
+    get_and_set_data()

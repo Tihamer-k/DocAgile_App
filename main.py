@@ -87,7 +87,7 @@ def get_and_set_data():
         #     'Ruta': ruta,
         #     'URL rama': branch
         # })
-        component.append({'Componente': componente})
+        component.append({'Componente': dato3[0]})
         component_type.append({'Tipo componente': tipo_componente})
         component_status.append({'Estado': estado})
         component_path.append({'Ruta': ruta})

@@ -17,7 +17,8 @@ A       bla/src/main/java/com/exm/ble/proxy/Blu.js
 <p>Requerido tener instalado y actualizado pip y pandas, para ello usaremos lo siguiente:</p>
  
 #### Para instalación y actualización de pip:
-<p>Te puedes apoyar en el siguiente link: <a>https://phoenixnap.com/kb/install-pip-windows</a></p>
+
+Te puedes apoyar [acá](https://phoenixnap.com/kb/install-pip-windows) con respecto a la instalación.
 
 Para actualizar pip:
 ```bash

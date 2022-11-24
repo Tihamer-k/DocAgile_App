@@ -46,6 +46,15 @@ def final_out_path(out_path, output_filename):
                 out_path = input("Ingresa la ruta donde guardarás el archivo:\n")
 
 
+def obtain_diff():
+    list = []
+    while True:
+        data = input()
+        if 'Exit' == data:
+            break
+        list.append(data.replace(space, "-"))
+    return list
+
 
 def get_and_set_data():
     output_filename = input("Indica el nombre del archivo de salida:\n")
@@ -58,8 +67,9 @@ def get_and_set_data():
     branch = input("ingresa path de la rama en Bitbucket (opcional):\n")
     branch = branch_path(branch)
     print("\n")
-    print("Ingresa el git diff copiado finalizando con un Ctrl + D\n")
-    input_text = sys.stdin.read().replace(space, "-").split("\n")
+    print("Ingresa el git diff copiado, presiona Enter y escribe 'Exit' para Salir.")
+    input_text = obtain_diff()
+    # input_text = sys.stdin.read().replace(space, "-").split("\n")
     print("\n")
     for i in input_text:
         dato = i.split("-")

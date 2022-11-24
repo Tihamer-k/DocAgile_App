@@ -17,6 +17,10 @@ A       bla/src/main/java/com/exm/ble/proxy/Blu.js
 <p>Requerido tener instalado y actualizado pip y pandas, para ello usaremos lo siguiente:</p>
  
 #### Para instalación y actualización de pip:
+
+Te puedes apoyar [acá](https://phoenixnap.com/kb/install-pip-windows) con respecto a la instalación.
+
+Para actualizar pip:
 ```bash
 python -m pip install --upgrade  
 ```
@@ -26,4 +30,11 @@ python -m pip install --upgrade
 #### Para instalación de pandas:
 ```bash
 pip install pandas    
+```
+
+#### instalación de la librería openpyxl:
+<p>para el correcto funcionamiento debemos instalar o actualizar esta librería:</p>
+
+```bash
+python -m pip install --upgrade openpyxl
 ```

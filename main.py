@@ -9,6 +9,7 @@ component_type = []
 component_status = []
 component_path = []
 branch_path_component = []
+list = []
 
 
 def format_datatype(param):
@@ -61,10 +62,8 @@ def final_out_path(out_path, output_filename):
 
 
 def obtain_diff():
-    list = []
     while True:
-        data = input()
-        valid_diff(data)
+        data = valid_diff(input())
         if 'Exit' == data:
             break
         list.append(data.replace(space, "-"))

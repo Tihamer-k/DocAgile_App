@@ -1,4 +1,3 @@
-import sys
 import pandas as pd
 from pandas import ExcelWriter
 import re
@@ -32,6 +31,21 @@ def valid_out_path(param):
     return re.search("^C:..\\w", param)
 
 
+def valid_input(input_text):
+    return re.search("(^[M|A]+\\s+\\w+/+\\w)|(Exit)", input_text)
+
+
+def valid_diff(data):
+    x = False
+    while not x:
+        input_txt = valid_input(data)
+        if input_txt:
+            return data
+        else:
+            print("¡Formato de entrada no es correcto!\n")
+            data = input("Intenta de nuevo:\n")
+
+
 def final_out_path(out_path, output_filename):
     x = False
     if out_path == "doc_agil":
@@ -43,13 +57,14 @@ def final_out_path(out_path, output_filename):
                 return f"{out_path}/{output_filename}.xlsx"
             else:
                 print("¡Formato de ruta no es correcto!")
-                out_path = input("Ingresa la ruta donde guardarás el archivo:\n")
+                out_path = input("Ingresa la ruta donde guardarás el archivo (opcional):\n")
 
 
 def obtain_diff():
     list = []
     while True:
         data = input()
+        valid_diff(data)
         if 'Exit' == data:
             break
         list.append(data.replace(space, "-"))
@@ -60,7 +75,7 @@ def get_and_set_data():
     output_filename = input("Indica el nombre del archivo de salida:\n")
     if output_filename == "":
         output_filename = "nuevo_doc_agil"
-    out_path = input("Ingresa la ruta donde guardarás el archivo:\n")
+    out_path = input("Ingresa la ruta donde guardarás el archivo (opcional):\n")
     if out_path == "":
         out_path = "doc_agil"
     out_path = final_out_path(out_path, output_filename)
@@ -111,9 +126,9 @@ def excel_writer(out_path):
         df3.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=9)
         df4.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=15)
         writer.save()
-        print("¡Data guardada en el archivo!")
     except():
         print("Problema guardando la data")
+    print("¡Data guardada en el archivo!")
 
 
 if __name__ == '__main__':

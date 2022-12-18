@@ -32,7 +32,7 @@ python -m pip install --upgrade
 pip install pandas    
 ```
 
-#### instalación de la librería openpyxl:
+#### Instalación de la librería openpyxl:
 <p>para el correcto funcionamiento debemos instalar o actualizar esta librería:</p>
 
 ```bash

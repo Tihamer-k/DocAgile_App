@@ -9,7 +9,7 @@ git diff --name-status --diff-filter=MRAD origin/"rama a comparar"..origin/"rama
 ```text
 M       bla/src/main/java/com/exm/ble/mapper/Bla.jspx
 M       bla/src/main/java/com/exm/ble/mapper/Ble.java
-A       bla/src/main/java/com/exm/ble/mapper/Bli.python
+A       bla/src/main/java/com/exm/ble/mapper/Bli.py
 M       bla/src/main/java/com/exm/ble/mapper/impl/Blo.java
 A       bla/src/main/java/com/exm/ble/proxy/Blu.js
 ```

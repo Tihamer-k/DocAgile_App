@@ -56,5 +56,5 @@ def obtain_diff():
         data = valid_diff(input())
         if 'Exit' == data:
             break
-        s.LIST.append(data.replace(s.SPACE, "-"))
+        s.LIST.append(data.replace(s.SPACE, "###"))
     return s.LIST

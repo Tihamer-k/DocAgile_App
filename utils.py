@@ -20,7 +20,7 @@ def get_and_set_data():
     # input_text = sys.stdin.read().replace(space, "-").split("\n")
     print("\n")
     for i in input_text:
-        dato = i.split("-")
+        dato = i.split("###")
         estado = v.format_datatype(dato[0])
         ruta = dato[1]
         dato2 = dato[1].split("/")

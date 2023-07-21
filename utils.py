@@ -28,37 +28,39 @@ def get_and_set_data():
         componente = dato2[dato2_size - 1]
         dato3 = componente.split(".")
         tipo_componente = dato3[1]
-        # diff_data.append({
-        #     'Componente': componente,
-        #     'Tipo componente': tipo_componente,
-        #     'Estado': estado,
-        #     'Ruta': ruta,
-        #     'URL rama': branch
-        # })
-        s.COMPONENT.append({'Nombre Archivo/Componente': dato3[0]})
-        s.COMPONENT_TYPE.append({'Tipo Archivo/Componente': tipo_componente})
-        s.COMPONENT_STATUS.append({'Tipo de Acción': estado})
-        s.COMPONENT_PATH.append({'Ruta': ruta})
-        s.BRANCH_PATH_COMPONENT.append({'URL rama': branch})
+        s.DIFF_DATA.append({
+            'Nombre Archivo/Componente con Tipo Archivo/Componente': componente,
+            'Nombre Archivo/Componente': dato3[0],
+            'Tipo Archivo/Componente': tipo_componente,
+            'Tipo de Acción': estado,
+            'Ruta': ruta,
+            'URL rama': branch
+        })
+        # s.COMPONENT.append({'Nombre Archivo/Componente': dato3[0]})
+        # s.COMPONENT_TYPE.append({'Tipo Archivo/Componente': tipo_componente})
+        # s.COMPONENT_STATUS.append({'Tipo de Acción': estado})
+        # s.COMPONENT_PATH.append({'Ruta': ruta})
+        # s.BRANCH_PATH_COMPONENT.append({'URL rama': branch})
         excel_writer(out_path)
 
 
 def excel_writer(out_path):
     # print(diff_data)
-    # df = pd.DataFrame(diff_data)
-    df = pd.DataFrame(s.COMPONENT)
-    df1 = pd.DataFrame(s.COMPONENT_TYPE)
-    df2 = pd.DataFrame(s.COMPONENT_STATUS)
-    df3 = pd.DataFrame(s.COMPONENT_PATH)
-    df4 = pd.DataFrame(s.BRANCH_PATH_COMPONENT)
+    df_json = pd.DataFrame(s.DIFF_DATA)
+    # df = pd.DataFrame(s.COMPONENT)
+    # df1 = pd.DataFrame(s.COMPONENT_TYPE)
+    # df2 = pd.DataFrame(s.COMPONENT_STATUS)
+    # df3 = pd.DataFrame(s.COMPONENT_PATH)
+    # df4 = pd.DataFrame(s.BRANCH_PATH_COMPONENT)
     try:
         writer = ExcelWriter(out_path, engine=None)
-        df.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=2)
-        df1.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=5)
-        df2.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=7)
-        df3.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=9)
-        df4.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=15)
-        writer.save()
+        # df.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=2)
+        # df1.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=5)
+        # df2.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=7)
+        # df3.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=9)
+        # df4.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=15)
+        df_json.to_excel(writer, sheet_name="hoja2", index=False)
+        writer._save()
     except():
         print("Problema guardando la data")
-    print("¡Data guardada en el archivo!")
+    print("¡Data guardada!")

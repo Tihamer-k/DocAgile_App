@@ -1,4 +1,7 @@
 import re
+
+from colorama import Fore, Style
+
 import settings as s
 
 
@@ -23,7 +26,7 @@ def valid_out_path(param):
 
 
 def valid_input(input_text):
-    return re.search("(^[M|A]+\\s+\\w+/+\\w)|(Exit)", input_text)
+    return re.search("(^[M|A]+\\s+\\w+/+\\w)|(^[M|A]+\\s+\\w)|(Exit)", input_text)
 
 
 def valid_diff(data):
@@ -33,8 +36,8 @@ def valid_diff(data):
         if input_txt:
             return data
         else:
-            print("¡Formato de entrada no es correcto!\n")
-            data = input("Intenta de nuevo:\n")
+            print("¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
+            data = input(Style.RESET_ALL + "Intenta de nuevo:\n")
 
 
 def final_out_path(out_path, output_filename):

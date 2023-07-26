@@ -26,7 +26,9 @@ def valid_out_path(param):
 
 
 def valid_input(input_text):
-    return re.search("(^[M|A]+\\s+\\w+/+\\w)|(^[M|A]+\\s+\\w)|(Exit)", input_text)
+    regexp = r'(M|A)\s{7}[\w/.-]+|Exit'
+    if re.match(regexp, input_text):
+        return re.search(regexp, input_text)
 
 
 def valid_diff(data):
@@ -36,8 +38,10 @@ def valid_diff(data):
         if input_txt:
             return data
         else:
-            print("¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
-            data = input(Style.RESET_ALL + "Intenta de nuevo:\n")
+            print("\n¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
+            print("Debe iniciar con M o A, seguido por 7 espacios y texto con o sin slash entre el. "
+                  "Finalizando con el nombre de el archivo junto con su extención.")
+            data = input(Style.RESET_ALL + "\nIntenta de nuevo:\n")
 
 
 def final_out_path(out_path, output_filename):

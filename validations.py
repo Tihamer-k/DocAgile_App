@@ -1,4 +1,7 @@
 import re
+
+from colorama import Fore, Style
+
 import settings as s
 
 
@@ -23,7 +26,9 @@ def valid_out_path(param):
 
 
 def valid_input(input_text):
-    return re.search("(^[M|A]+\\s+\\w+/+\\w)|(Exit)", input_text)
+    regexp = r'(M|A)\s{7}[\w/.-]+|Exit'
+    if re.match(regexp, input_text):
+        return re.search(regexp, input_text)
 
 
 def valid_diff(data):
@@ -33,8 +38,10 @@ def valid_diff(data):
         if input_txt:
             return data
         else:
-            print("¡Formato de entrada no es correcto!\n")
-            data = input("Intenta de nuevo:\n")
+            print("\n¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
+            print("Debe iniciar con M o A, seguido por 7 espacios y texto con o sin slash entre el. "
+                  "Finalizando con el nombre de el archivo junto con su extención.")
+            data = input(Style.RESET_ALL + "\nIntenta de nuevo:\n")
 
 
 def final_out_path(out_path, output_filename):
@@ -56,5 +63,5 @@ def obtain_diff():
         data = valid_diff(input())
         if 'Exit' == data:
             break
-        s.LIST.append(data.replace(s.SPACE, "-"))
+        s.LIST.append(data.replace(s.SPACE, "###"))
     return s.LIST

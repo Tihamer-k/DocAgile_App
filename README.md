@@ -27,9 +27,16 @@ python -m pip install --upgrade
 > Si es requerido validar que versión de python se está usando para asi mismo saber si iniciar con `py`,
 > `python` o `python3`. En este caso se usó python 3.9
 
+## Libs necesarias para usar este proyecto:
+
 #### Para instalación de pandas:
 ```bash
 pip install pandas    
+```
+
+#### Para instalación de colorama:
+```bash
+pip install colorama
 ```
 
 #### Instalación de la librería openpyxl:

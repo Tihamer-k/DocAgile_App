@@ -3,7 +3,7 @@ from colorama import Fore, Style
 import src.utils.ValidationData as Validate
 
 
-class GitDiffGenerator:
+class CommandGenerator:
     def __init__(self):
         self.__branch_name_left = None
         self.__branch_name_right = None

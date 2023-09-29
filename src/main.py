@@ -1,6 +1,4 @@
-from setuptools.sandbox import run_setup
-
-from src.modules.CommandGenerator import GitDiffGenerator
+from src.modules.CommandGenerator import CommandGenerator
 from src.modules.DataGenerator import DataGenerator
 from src.modules.ExcelReport import ExcelReport
 
@@ -9,7 +7,7 @@ OPTIONAL_PRESS_ENTER = "(opcional, presiona enter para continuar):\n"
 
 def run_project():
     print("¡Bienvenido a Fill_DocAgil_APP!\n")
-    branch_action = GitDiffGenerator()
+    branch_action = CommandGenerator()
     branch_action.get_branch_names()
 
     data_generator = DataGenerator()

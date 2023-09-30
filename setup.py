@@ -1,3 +1,5 @@
+import os
+
 from setuptools import setup, find_packages
 
 with open('README.md', 'r', encoding='utf-8') as f:
@@ -15,4 +17,10 @@ setup(
     packages=find_packages(exclude=['tests*']),
     include_package_data=True,
     python_requires='>=3.10',
+    entry_points={
+        'console_scripts': [
+            'launch_it = Fill_DocAgil_App.main:main',
+            'lanzalo = Fill_DocAgil_App.main:main',
+        ],
+    },
 )

@@ -1,6 +1,6 @@
 /.idea/
 /venv/
-src/resources/doc_agil/*
 build/*
 dist/*
 Fill_DocAgil_App.egg-info/*
+/resources/doc_agil/*

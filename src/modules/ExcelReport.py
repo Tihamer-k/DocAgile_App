@@ -5,7 +5,7 @@ import pandas as pd
 from pandas import ExcelWriter
 
 
-class ExcelReport():
+class ExcelReport:
     def __init__(self):
         self.data_obj = None
 

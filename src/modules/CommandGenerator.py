@@ -12,7 +12,9 @@ class CommandGenerator:
         if branch_left is not None and branch_right is not None:
             self.__branch_name_left = branch_left
             self.__branch_name_right = branch_right
-            return f"git diff --name-status --diff-filter=MRAD origin/{self.__branch_name_left}..origin/{self.__branch_name_right}"
+            return (f"git diff --name-status --diff-filter=MRAD "
+                    f"origin/{self.__branch_name_left}"
+                    f"..origin/{self.__branch_name_right}")
         else:
             return "nombres de ramas no informados"
 
@@ -26,7 +28,7 @@ class CommandGenerator:
             print(
                 f"¡Acá está tú comando!\n" +
                 Fore.GREEN + f" {command} \n " +
-                Style.RESET_ALL + f"Ejecutalo en la ubicación de tú proyecto y vuelve con la respuesta copiada./n")
+                Style.RESET_ALL + f"Ejecutalo en la ubicación de tú proyecto y vuelve con la respuesta copiada.")
             print("\n")
         else:
             print("\n")

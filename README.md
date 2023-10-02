@@ -2,7 +2,7 @@
 <p>Proyecto pensado para facilitar la documentación de los componentes modificados con los datos obtenidos del comando:</p>
 
 ```bash
-git diff --name-status --diff-filter=MRAD origin/"rama a comparar"..origin/"rama modificada"
+git diff --name-status --diff-filter=MRAD origin/"rama Estable"..origin/"rama modificada"
 ```
 #### Resultado ejemplo de ejecución del comando anterior:
 

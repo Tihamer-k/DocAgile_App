@@ -1,5 +1,4 @@
 import os
-from abc import ABC
 
 import src.utils.Settings as Settings
 import pandas as pd
@@ -20,8 +19,8 @@ class ExcelReport:
             writer = ExcelWriter(final_out_path, engine="openpyxl")
             # df.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=2)
             self.data_obj.to_excel(writer, sheet_name="hoja1", index=False)
-            writer._save()
             writer.close()
         except():
             print("Problema guardando la data")
         print("¡Data guardada!")
+        os.startfile(final_out_path)

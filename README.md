@@ -40,7 +40,7 @@ pip install colorama
 ```
 
 #### Instalación de la librería openpyxl:
-<p>para el correcto funcionamiento debemos instalar o actualizar esta librería:</p>
+<p>Para el correcto funcionamiento debemos instalar o actualizar esta librería:</p>
 
 ```bash
 python -m pip install --upgrade openpyxl

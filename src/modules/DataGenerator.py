@@ -19,7 +19,7 @@ class DataGenerator:
     def get_output_path(self, path, output_filename):
         if path == "":
             path = "doc_agil"
-            print("¡Nombre default guardado!\n")
+            print("¡Ruta default añadida!\n")
         self.out_path = Validate.final_out_path(path, output_filename)
         return self.out_path
 
@@ -35,12 +35,17 @@ class DataGenerator:
             dato2 = dato[1].split("/")
             dato2_size = len(dato2)
             componente = dato2[dato2_size - 1]
-            dato3 = componente.split(".")
-            tipo_componente = dato3[1]
+            if '.' in componente:
+                dato3 = componente.split(".")
+                nombre_componente = dato3[0]
+                tipo_componente = dato3[1]
+            else:
+                nombre_componente = componente
+                tipo_componente = "-"
             Settings.DIFF_DATA.append(
                 {
-                    'Nombre Archivo/Componente con Tipo Archivo/Componente': componente,
-                    'Nombre Archivo/Componente': dato3[0],
+                    'Componente con Tipo Archivo': componente,
+                    'Nombre Componente': nombre_componente,
                     'Tipo Archivo/Componente': tipo_componente,
                     'Tipo de Acción': estado,
                     'Ruta': ruta,

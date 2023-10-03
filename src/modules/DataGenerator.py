@@ -1,3 +1,5 @@
+from colorama import Fore
+
 import src.utils.ValidationData as Validate
 import src.utils.Settings as Settings
 
@@ -19,7 +21,6 @@ class DataGenerator:
     def get_output_path(self, path, output_filename):
         if path == "":
             path = "doc_agil"
-            print("¡Ruta default añadida!\n")
         self.out_path = Validate.final_out_path(path, output_filename)
         return self.out_path
 
@@ -28,30 +29,33 @@ class DataGenerator:
 
     def generate_data(self):
         input_text = obtain_diff()
-        for i in input_text:
-            dato = i.split("###")
-            estado = Validate.format_datatype(dato[0])
-            ruta = dato[1]
-            dato2 = dato[1].split("/")
-            dato2_size = len(dato2)
-            componente = dato2[dato2_size - 1]
-            if '.' in componente:
-                dato3 = componente.split(".")
-                nombre_componente = dato3[0]
-                tipo_componente = dato3[1]
-            else:
-                nombre_componente = componente
-                tipo_componente = "-"
-            Settings.DIFF_DATA.append(
-                {
-                    'Componente con Tipo Archivo': componente,
-                    'Nombre Componente': nombre_componente,
-                    'Tipo Archivo/Componente': tipo_componente,
-                    'Tipo de Acción': estado,
-                    'Ruta': ruta,
-                    'URL rama': self.branch
-                }
-            )
+        if len(input_text) > 0:
+            for i in input_text:
+                dato = i.split("###")
+                estado = Validate.format_datatype(dato[0])
+                ruta = dato[1]
+                dato2 = dato[1].split("/")
+                dato2_size = len(dato2)
+                componente = dato2[dato2_size - 1]
+                if '.' in componente:
+                    dato3 = componente.split(".")
+                    nombre_componente = dato3[0]
+                    tipo_componente = dato3[1]
+                else:
+                    nombre_componente = componente
+                    tipo_componente = "-"
+                Settings.DIFF_DATA.append(
+                    {
+                        'Componente con Tipo Archivo': componente,
+                        'Nombre Componente': nombre_componente,
+                        'Tipo Componente': tipo_componente,
+                        'Tipo de Acción': estado,
+                        'Ruta': ruta,
+                        'URL rama': self.branch
+                    }
+                )
+        else:
+            print(Fore.RED + "¡Data no informada!" + Fore.RESET + " No se genera Excel.")
 
 
 def obtain_diff():
@@ -59,5 +63,6 @@ def obtain_diff():
         data = Validate.valid_diff(input())
         if 'Exit' == data:
             break
-        Settings.LIST.append(data.replace(Settings.SPACE, "###"))
+        if data is not None:
+            Settings.LIST.append(data.replace(Settings.SPACE, "###"))
     return Settings.LIST

@@ -47,7 +47,7 @@ def valid_diff(data):
             print("Debe iniciar con M o A, seguido por 7 espacios y texto con o sin slash entre el. "
                   "Finalizando con el nombre de el archivo junto con su tipo de archivo (si lo tiene).")
             print("También puedes escribir 'Exit' para finalizar.")
-            data = input(Style.RESET_ALL + "\nIntenta de nuevo o solo presiona Enter:\n")
+            data = input(Style.RESET_ALL + "\nIntenta de nuevo:\n")
 
 
 def final_out_path(out_path, output_filename):
@@ -66,7 +66,7 @@ def final_out_path(out_path, output_filename):
                 print("¡Guardado en ruta indicada!\n")
                 return f"{data}\\{output_filename}.xlsx"
             elif data == "":
-                print("¡Ruta default añadida!\n")
+                print("¡Se añadio ruta default!\n")
                 return f"{project_path}\\resources\\{out_path}\\{output_filename}.xlsx"
             else:
                 print("¡Formato de ruta no es correcto!")

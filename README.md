@@ -12,6 +12,9 @@ M       bla/src/main/java/com/exm/ble/mapper/Ble.java
 A       bla/src/main/java/com/exm/ble/mapper/Bli.py
 M       bla/src/main/java/com/exm/ble/mapper/impl/Blo.java
 A       bla/src/main/java/com/exm/ble/proxy/Blu.js
+D       bla/src/main/java/com/exm/ble/proxy/abc
+M       file
+R       bla/src/main/java/com/exm/ble/proxy/blo.properties
 ```
 <p>El anterior es el texto que copiaremos y pegaremos en la consola cuando el programa lo solicite.</p>
 <p>Requerido tener instalado y actualizado pip y pandas, para ello usaremos lo siguiente:</p>

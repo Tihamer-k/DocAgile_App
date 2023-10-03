@@ -9,6 +9,10 @@ def format_datatype(param):
         res = "Modificado"
     elif param == "A":
         res = "Nuevo"
+    elif param == "R":
+        res = "Renombrado"
+    elif param == "D":
+        res = "Eliminado"
     return res
 
 
@@ -30,7 +34,7 @@ def valid_out_path(param):
 
 
 def valid_input(input_text):
-    regexp = r'(M|A)\s{7}[\w/.-]+|Exit'
+    regexp = r'(M|A|R|D)\s{7}[\w/.-]+|Exit'
     if re.match(regexp, input_text):
         return re.search(regexp, input_text)
 

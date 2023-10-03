@@ -7,7 +7,7 @@ setup(
     name='Fill_DocAgil_App',
     version='0.2.0',
     url='https://github.com/Tihamer-k/Fill_DocAgil_App',
-    long_description=open('README.md').read(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
     license='MIT',
     author='Tihamer Aldana',

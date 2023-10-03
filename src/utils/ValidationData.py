@@ -4,16 +4,13 @@ from colorama import Fore, Style
 
 
 def format_datatype(param):
-    res = ""
-    if param == "M":
-        res = "Modificado"
-    elif param == "A":
-        res = "Nuevo"
-    elif param == "R":
-        res = "Renombrado"
-    elif param == "D":
-        res = "Eliminado"
-    return res
+    mapping = {
+        "M": "Modificado",
+        "A": "Nuevo",
+        "R": "Renombrado",
+        "D": "Eliminado"
+    }
+    return mapping.get(param, "")
 
 
 def branch_path(param):

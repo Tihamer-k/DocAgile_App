@@ -48,3 +48,15 @@ pip install colorama
 ```bash
 python -m pip install --upgrade openpyxl
 ```
+
+## Para iniciar el proyecto en la terminal:
+
+Digitas:
+```bash
+lanzalo
+```
+
+O Digitas:
+```bash
+launch_it
+```

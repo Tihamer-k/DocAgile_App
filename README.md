@@ -30,7 +30,8 @@ python -m pip install --upgrade
 > Si es requerido validar que versión de python se está usando para asi mismo saber si iniciar con `py`,
 > `python` o `python3`. En este caso se usó python 3.9
 
-## Libs necesarias para usar este proyecto:
+## Libs necesarias para usar este proyecto: 
+No hay necesidad de instalarlas una por una, ya que más adelante lo instalaremos todo en conjunto al instalar el `setup.py`.
 
 #### Para instalación de pandas:
 ```bash
@@ -50,6 +51,18 @@ python -m pip install --upgrade openpyxl
 ```
 
 ## Para iniciar el proyecto en la terminal:
+
+#### Para poder ejecutar el setup.py:
+```bash
+pip install -U setuptools
+```
+- Luego de instalar el setuptools procedemos con lo siguiente
+
+#### Instalar setup.py modo develop:
+```bash
+python setup.py develop
+```
+- Tras realizar lo anterior ya se puede iniciar el proyecto desde la terminal, para eso:
 
 Digitas:
 ```bash

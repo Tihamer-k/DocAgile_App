@@ -73,3 +73,13 @@ O Digitas:
 ```bash
 launch_it
 ```
+
+## Ejemplo de uso
+
+Ejecución programa:
+
+![terminal_test.png](resources%2Fimg%2Fterminal_test.png)
+
+Tras la ejecución, se abre el archivo Excel con la entrada formateada:
+
+![excel_test.png](resources%2Fimg%2Fexcel_test.png)

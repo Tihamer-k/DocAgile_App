@@ -8,7 +8,7 @@ OPTIONAL_PRESS_ENTER = "(opcional, presiona enter para continuar):\n"
 
 
 def run_project():
-    print("¡Bienvenido a Fill_DocAgil_APP!\n")
+    print("¡Bienvenido a DocAgile_APP!\n")
     branch_action = CommandGenerator()
     data_generator = DataGenerator()
     excel_report = ExcelReport()

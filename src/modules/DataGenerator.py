@@ -1,4 +1,4 @@
-from colorama import Fore
+from colorama import Fore, Style
 
 import src.utils.ValidationData as Validate
 import src.utils.Settings as Settings
@@ -13,7 +13,7 @@ class DataGenerator:
     def get_output_filename(self, file_name):
         if file_name == "":
             self.output_filename = "nuevo_doc_agil"
-            print("¡Nombre default guardado!\n")
+            print(Fore.GREEN + "¡Nombre default guardado!\n" + Style.RESET_ALL)
         else:
             self.output_filename = file_name
         return self.output_filename

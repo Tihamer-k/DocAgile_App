@@ -17,15 +17,26 @@ def branch_path(param):
     res = param
     if res == "":
         res = "path no informado"
-        print("¡Nombre default guardado!\n")
+        print(Fore.GREEN + "¡Nombre default guardado!\n" + Style.RESET_ALL)
     return res
 
 
 def valid_out_path(param):
     if param != "":
-        regexp = r'^[a-zA-Z]:\\(?:[^\\/:*?"<>|\r\n]+\\)*[^\\/:*?"<>|\r\n]*$'
-        match = re.search(regexp, param)
-        return match.group() if match else None
+        # RegExp to match Mac/Linux file paths
+        mac_linux_regexp = r'^(\/[^/ ]*)+\/?$'
+        # Regexp to match Windows file path
+        windows_regexp = r'^[a-zA-Z]:\\(?:[^\\/:*?"<>|\r\n]+\\)*[^\\/:*?"<>|\r\n]*$'
+
+        match_unix = re.search(mac_linux_regexp, param)
+        match_windows = re.search(windows_regexp, param)
+
+        if match_unix:
+            return match_unix.group()
+        elif match_windows:
+            return match_windows.group()
+        else:
+            return None
     else:
         return param
 
@@ -57,16 +68,16 @@ def final_out_path(out_path, output_filename):
         if out_path is None:
             out_path = "doc_agil"
         # print(f"{project_path}\\resources\\{out_path}\\{output_filename}.xlsx")
-        print("¡Ruta default añadida!\n")
+        print(Fore.GREEN + "¡Ruta default añadida!\n" + Style.RESET_ALL)
         return f"{project_path}\\resources\\{out_path}\\{output_filename}.xlsx"
     else:
         while not x:
             data = valid_out_path(out_path)
             if data:
-                print("¡Guardado en ruta indicada!\n")
+                print(Fore.GREEN + "¡Ruta indicada guardada!\n" + Style.RESET_ALL)
                 return f"{data}\\{output_filename}.xlsx"
             elif data == "":
-                print("¡Se añadio ruta default!\n")
+                print(Fore.GREEN + "¡Se añadió ruta default!\n" + Style.RESET_ALL)
                 return f"{project_path}\\resources\\{out_path}\\{output_filename}.xlsx"
             else:
                 print("¡Formato de ruta no es correcto!")

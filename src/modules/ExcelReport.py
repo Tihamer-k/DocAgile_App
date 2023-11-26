@@ -1,5 +1,6 @@
 import os
 
+from colorama import Fore, Style
 from openpyxl.reader.excel import load_workbook
 
 import src.utils.Settings as Settings
@@ -25,7 +26,7 @@ class ExcelReport:
                 writer.close()
             except():
                 print("Problema guardando la data")
-            print("¡Data guardada!")
+            print(Fore.GREEN + "¡Data guardada!" + Style.RESET_ALL)
             modify_excel_report(final_out_path)
             os.startfile(final_out_path)
 

@@ -29,14 +29,27 @@ class DataGenerator:
 
     def generate_data(self):
         input_text = obtain_diff()
+        renamed = "N/A"
+        renamed_path = "N/A"
         if len(input_text) > 0:
             for i in input_text:
                 dato = i.split("###")
+                if "  " in dato[1]:
+                    dato_new = i.split("  ")
+                    renamed_path = dato_new[1]
+                    ruta = dato_new[0].replace("R###", "")
+                    dato2 = dato_new[0].split("/")
+                    dato2_size = len(dato2)
+                    componente = dato2[dato2_size - 1]
+                    dato_renamed = dato_new[1].split("/")
+                    renamed_size = len(dato_renamed)
+                    renamed = dato_renamed[renamed_size - 1]
+                else:
+                    ruta = dato[1]
+                    dato2 = dato[1].split("/")
+                    dato2_size = len(dato2)
+                    componente = dato2[dato2_size - 1]
                 estado = Validate.format_datatype(dato[0])
-                ruta = dato[1]
-                dato2 = dato[1].split("/")
-                dato2_size = len(dato2)
-                componente = dato2[dato2_size - 1]
                 if '.' in componente:
                     dato3 = componente.split(".")
                     nombre_componente = dato3[0]
@@ -51,9 +64,13 @@ class DataGenerator:
                         'Tipo Componente': tipo_componente,
                         'Tipo de Acción': estado,
                         'Ruta': ruta,
-                        'URL rama': self.branch
+                        'URL rama': self.branch,
+                        'renombrado': renamed,
+                        'ruta renombrado': renamed_path
                     }
                 )
+                renamed = "N/A"
+                renamed_path = "N/A"
         else:
             print(Fore.RED + "¡Data no informada!" + Fore.RESET + " No se genera Excel.")
 

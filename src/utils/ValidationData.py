@@ -2,6 +2,8 @@ import os
 import re
 from colorama import Fore, Style
 
+from src.utils import Settings
+
 
 def format_datatype(param):
     mapping = {
@@ -42,9 +44,16 @@ def valid_out_path(param):
 
 
 def valid_input(input_text):
-    regexp = r'(M|A|R|D)\s{7}[\w/.-]+|Exit'
+    regexp = r'(M|A|R|D|R090)\s{4}|\s{7}[\w/.-]+|Exit'
     if re.match(regexp, input_text):
         return re.search(regexp, input_text)
+
+
+def valid_res(param):
+    if param.__contains__("R090"):
+        return param.replace("R090    ", "R" + Settings.SPACE)
+    else:
+        return param
 
 
 def valid_diff(data):
@@ -52,7 +61,7 @@ def valid_diff(data):
     while not x:
         input_txt = valid_input(data)
         if input_txt:
-            return data
+            return valid_res(data)
         else:
             print("\n¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
             print("Debe iniciar con M o A, seguido por 7 espacios y texto con o sin slash entre el. "

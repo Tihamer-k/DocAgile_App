@@ -64,9 +64,9 @@ class DataGenerator:
                         'Tipo Componente': tipo_componente,
                         'Tipo de Acción': estado,
                         'Ruta': ruta,
-                        'URL rama': self.branch,
                         'renombrado': renamed,
-                        'ruta renombrado': renamed_path
+                        'ruta renombrado': renamed_path,
+                        'URL rama': self.branch
                     }
                 )
                 renamed = "N/A"

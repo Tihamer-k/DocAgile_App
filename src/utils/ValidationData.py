@@ -64,7 +64,8 @@ def valid_diff(data):
             return valid_res(data)
         else:
             print("\n¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
-            print("Debe iniciar con M o A, seguido por 7 espacios y texto con o sin slash entre el. "
+            print("Debe iniciar con M, D, A, seguido por 7 espacios (o R090, seguido por 4 espacios) "
+                  "y texto con o sin slash entre el. "
                   "Finalizando con el nombre de el archivo junto con su tipo de archivo (si lo tiene).")
             print("También puedes escribir 'Exit' para finalizar.")
             data = input(Style.RESET_ALL + "\nIntenta de nuevo:\n")

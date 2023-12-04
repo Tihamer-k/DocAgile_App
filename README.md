@@ -11,7 +11,7 @@ M       bla/src/main/java/com/exm/ble/mapper/Bla.jspx
 M       bla/src/main/java/com/exm/ble/mapper/Ble.java
 A       bla/src/main/java/com/exm/ble/mapper/Bli.py
 M       bla/src/main/java/com/exm/ble/mapper/impl/Blo.java
-A       bla/src/main/java/com/exm/ble/proxy/Blu.js
+R090    bla/src/main/java/com/exm/ble/proxy/Blu.js  bla/src/main/java/com/exm/ble/proxy/BluU.js
 D       bla/src/main/java/com/exm/ble/proxy/abc
 M       file
 R       bla/src/main/java/com/exm/ble/proxy/blo.properties

@@ -25,25 +25,15 @@ Te puedes apoyar [acá](https://phoenixnap.com/kb/install-pip-windows) con respe
 
 Para actualizar pip:
 ```bash
-python -m pip install --upgrade  
+python.exe -m pip install --upgrade pip --user  
 ```
 > Si es requerido validar que versión de python se está usando para asi mismo saber si iniciar con `py`,
 > `python` o `python3`. En este caso se usó python 3.9
 
 ## Libs necesarias para usar este proyecto: 
-No hay necesidad de instalarlas una por una, ya que más adelante lo instalaremos todo en conjunto al instalar el `setup.py`.
+Lo instalaremos todo en conjunto al instalar `setup.py`.
 
-#### Para instalación de pandas:
-```bash
-pip install pandas    
-```
-
-#### Para instalación de colorama:
-```bash
-pip install colorama
-```
-
-#### Instalación de la librería openpyxl:
+#### Instalación de la librería openpyxl (por si acaso):
 <p>Para el correcto funcionamiento debemos instalar o actualizar esta librería:</p>
 
 ```bash
@@ -60,16 +50,16 @@ pip install -U setuptools
 
 #### Instalar setup.py modo develop:
 ```bash
-python setup.py develop
+python setup.py develop --user
 ```
-- Tras realizar lo anterior ya se puede iniciar el proyecto desde la terminal, para eso:
+- Tras realizar lo anterior ya se puede iniciar el proyecto desde la terminal sin necesidad de ubicar la ruta de este, 
+únicamente abrimos una nueva terminal y ejecutamos:
 
-Digitas:
 ```bash
 lanzalo
 ```
 
-O Digitas:
+O también:
 ```bash
 launch_it
 ```

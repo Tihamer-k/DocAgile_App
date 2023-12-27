@@ -3,12 +3,14 @@ from colorama import Fore, Style
 from src.modules.CommandGenerator import CommandGenerator
 from src.modules.DataGenerator import DataGenerator
 from src.modules.ExcelReport import ExcelReport
+import pyfiglet as pf
 
 OPTIONAL_PRESS_ENTER = "(opcional, presiona enter para continuar):\n"
 
 
 def run_project():
-    print("¡Bienvenido a DocAgile_APP!\n")
+    project_name = pf.figlet_format("DocAgile APP")
+    print(Fore.GREEN + project_name + Style.RESET_ALL)
     branch_action = CommandGenerator()
     data_generator = DataGenerator()
     excel_report = ExcelReport()

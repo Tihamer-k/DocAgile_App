@@ -11,7 +11,7 @@ setup(
     long_description_content_type='text/markdown',
     license='MIT',
     author='Tihamer Aldana',
-    install_requires=['openpyxl', 'pandas', 'colorama'],
+    install_requires=['openpyxl', 'pandas', 'colorama', 'pyfiglet'],
     packages=find_packages(exclude=['tests*']),
     include_package_data=True,
     python_requires='>=3.10',

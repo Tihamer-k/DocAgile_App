@@ -34,7 +34,7 @@ class ExcelReport:
 def modify_excel_report(final_out_path: str):
     wb = load_workbook(final_out_path)
     ws = wb['hoja1']
-    for letter in ['A', 'B', 'C', 'D', 'E', 'F']:
+    for letter in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
         max_width = 0
 
         for row_num in range(1, ws.max_row + 1):

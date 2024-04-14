@@ -5,6 +5,36 @@ import src.utils.Settings as Settings
 
 
 class DataGenerator:
+    """
+    The `DataGenerator` class is responsible for generating data for Excel files.
+
+    Attributes:
+        - output_filename: A string representing the name of the output file.
+        - out_path: A string representing the output path for the generated file.
+        - branch: A string representing the branch name.
+
+    Methods:
+        - get_output_filename(file_name): Sets the output filename.
+            - Params:
+                - file_name: A string representing the desired output filename.
+            - Returns:
+                - output_filename: A string representing the output filename.
+
+        - get_output_path(path, output_filename): Sets the output path.
+            - Params:
+                - path: A string representing the desired output path.
+                - output_filename: A string representing the output filename.
+            - Returns:
+                - out_path: A string representing the output path.
+
+        - get_branch_name(branch_name): Sets the branch name.
+            - Params:
+                - branch_name: A string representing the branch name.
+
+        - generate_data(): Generates the data for the Excel file.
+            - Returns:
+                - None
+    """
     def __init__(self):
         self.output_filename = None
         self.out_path = None
@@ -76,6 +106,11 @@ class DataGenerator:
 
 
 def obtain_diff():
+    """
+    Obtain the difference values and add them to the Settings.LIST.
+
+    :return: The updated Settings.LIST.
+    """
     while True:
         data = Validate.valid_diff(input())
         if 'Exit' == data:

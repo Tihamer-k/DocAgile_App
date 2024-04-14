@@ -42,9 +42,11 @@ python -m pip install --upgrade openpyxl
 
 ## Para iniciar el proyecto en la terminal:
 
+Primero hay que ubicarse en el proyecto en la terminal, luego de eso continua con los siguientes pasos:
+
 #### Para poder ejecutar el setup.py:
 ```bash
-pip install -U setuptools
+pip install -U setuptools --user
 ```
 - Luego de instalar el setuptools procedemos con lo siguiente
 

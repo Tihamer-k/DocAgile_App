@@ -68,8 +68,8 @@ launch_it
 
 Ejecución programa:
 
-![terminal_test.png](resources%2Fimg%2Fterminal_test.png)
+![terminal_test.png](resources/img/terminal_test.png)
 
 Tras la ejecución, se abre el archivo Excel con la entrada formateada:
 
-![excel_test.png](resources%2Fimg%2Fexcel_test.png)
+![excel_test.png](resources/img/excel_test.png)

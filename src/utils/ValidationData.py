@@ -6,6 +6,12 @@ from src.utils import Settings
 
 
 def format_datatype(param):
+    """
+    Format a datatype parameter.
+
+    :param param: The datatype parameter to format.
+    :return: The formatted datatype value.
+    """
     mapping = {
         "M": "Modificado",
         "A": "Nuevo",
@@ -16,6 +22,12 @@ def format_datatype(param):
 
 
 def branch_path(param):
+    """
+    This method takes a parameter and returns a modified version of it.
+
+    :param param: The input parameter which will be modified.
+    :return: The modified parameter if it is not an empty string, otherwise it returns "path no informado".
+    """
     res = param
     if res == "":
         res = "path no informado"
@@ -24,6 +36,10 @@ def branch_path(param):
 
 
 def valid_out_path(param):
+    """
+    :param param: The input path to be validated
+    :return: The validated path if it matches the expected format, otherwise None
+    """
     if param != "":
         # RegExp to match Mac/Linux file paths
         mac_linux_regexp = r'^(\/[^/ ]*)+\/?$'
@@ -44,12 +60,22 @@ def valid_out_path(param):
 
 
 def valid_input(input_text):
+    """
+    Check if the input text matches the specified pattern.
+
+    :param input_text: The input text to be checked.
+    :return: The matched pattern if found, None otherwise.
+    """
     regexp = r'(M|A|R|D|R090)\s{4}|\s{7}[\w/.-]+|Exit'
     if re.match(regexp, input_text):
         return re.search(regexp, input_text)
 
 
 def valid_res(param):
+    """
+    :param param: a string containing a parameter value
+    :return: a modified string if the parameter contains "R090", otherwise the original string
+    """
     if param.__contains__("R090"):
         return param.replace("R090    ", "R" + Settings.SPACE)
     else:
@@ -57,6 +83,14 @@ def valid_res(param):
 
 
 def valid_diff(data):
+    """
+    Validates the input data and returns a valid result.
+
+    :param data: The input data to be validated.
+    :type data: str
+    :return: The valid result.
+    :rtype: str
+    """
     x = False
     while not x:
         input_txt = valid_input(data)
@@ -72,6 +106,11 @@ def valid_diff(data):
 
 
 def final_out_path(out_path, output_filename):
+    """
+    :param out_path: The specified output path where the file will be saved. If this parameter is None or the value is "doc_agil", a default output path will be used.
+    :param output_filename: The name of the output file.
+    :return: The final output path, including the filename, where the file will be saved.
+    """
     x = False
     project_path = os.getcwd()
     if out_path == "doc_agil" or out_path is None:
@@ -95,6 +134,12 @@ def final_out_path(out_path, output_filename):
 
 
 def get_response(message):
+    """
+    Ask the user for a response to a given message and return their response.
+
+    :param message: The message to be displayed to the user.
+    :return: True if the user responds with 's', False if the user responds with 'n'.
+    """
     x = False
     print(message)
     res = input().lower()

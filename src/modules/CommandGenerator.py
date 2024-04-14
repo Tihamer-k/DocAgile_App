@@ -4,6 +4,23 @@ import src.utils.ValidationData as Validate
 
 
 class CommandGenerator:
+    """
+    CommandGenerator
+
+    This class represents a command generator for generating git diff commands.
+
+    Attributes:
+        __branch_name_left (str): The name of the left branch.
+        __branch_name_right (str): The name of the right branch.
+
+    Methods:
+        generate_git_diff_command(branch_left, branch_right)
+            Generates a git diff command based on the provided branch names.
+
+        get_branch_names()
+            Prompts the user to enter the branch names and generates the git diff command.
+
+    """
     def __init__(self):
         self.__branch_name_left = None
         self.__branch_name_right = None

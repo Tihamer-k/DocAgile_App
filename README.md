@@ -17,9 +17,13 @@ M       file
 R       bla/src/main/java/com/exm/ble/proxy/blo.properties
 ```
 <p>El anterior es el texto que copiaremos y pegaremos en la consola cuando el programa lo solicite.</p>
+
+### Diagramas
+Para visualización de los diagramas empleados para este desarrollo de [clic acá.](resources/Diagrams.md)
+
 <p>Requerido tener instalado y actualizado pip y pandas, para ello usaremos lo siguiente:</p>
  
-#### Para instalación y actualización de pip:
+### Para instalación y actualización de pip:
 
 Te puedes apoyar [acá](https://phoenixnap.com/kb/install-pip-windows) con respecto a la instalación.
 

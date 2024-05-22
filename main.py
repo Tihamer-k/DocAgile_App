@@ -16,6 +16,7 @@ def run_project():
     Runs the DocAgile APP project.
 
     Steps:
+
     1. Prints the project name using figlet_format.
     2. Creates instances of CommandGenerator, DataGenerator, and ExcelReport.
     3. Retrieves branch names using get_branch_names method of CommandGenerator.

@@ -18,6 +18,13 @@ R       bla/src/main/java/com/exm/ble/proxy/blo.properties
 ```
 <p>El anterior es el texto que copiaremos y pegaremos en la consola cuando el programa lo solicite.</p>
 
+### Requisitos para uso de la aplicación:
+- Python 3.10 en adelante.
+- Pip actualizado.
+- Excel instalado en el equipo.
+- Git instalado en el equipo.
+
+
 ### Diagramas
 Para visualización de los diagramas empleados para este desarrollo de [clic acá.](resources/Diagrams.md)
 
@@ -29,45 +36,40 @@ Te puedes apoyar [acá](https://phoenixnap.com/kb/install-pip-windows) con respe
 
 Para actualizar pip:
 ```bash
-python.exe -m pip install --upgrade pip --user  
+  python.exe -m pip install --upgrade pip --user  
 ```
 > Si es requerido validar que versión de python se está usando para asi mismo saber si iniciar con `py`,
 > `python` o `python3`. En este caso se usó python 3.9
 
 ## Libs necesarias para usar este proyecto: 
-Lo instalaremos todo en conjunto al instalar `setup.py`.
-
-#### Instalación de la librería openpyxl (por si acaso):
-<p>Para el correcto funcionamiento debemos instalar o actualizar esta librería:</p>
-
-```bash
-python -m pip install --upgrade openpyxl
-```
+Lo instalaremos todo en conjunto al instalar `setup.py` ya que los toma del archivo `requeriments.txt`.
 
 ## Para iniciar el proyecto en la terminal:
 
 Primero hay que ubicarse en el proyecto en la terminal, luego de eso continua con los siguientes pasos:
 
 #### Para poder ejecutar el setup.py:
+En caso de querer instalar a nivel de usuario se añade al final del comando `--user`, 
+de lo contrario se instalará a nivel global.
 ```bash
-pip install -U setuptools --user
+  pip install -U setuptools
 ```
 - Luego de instalar el setuptools procedemos con lo siguiente
 
 #### Instalar setup.py modo develop:
 ```bash
-python setup.py develop --user
+  python setup.py develop
 ```
 - Tras realizar lo anterior ya se puede iniciar el proyecto desde la terminal sin necesidad de ubicar la ruta de este, 
 únicamente abrimos una nueva terminal y ejecutamos:
 
 ```bash
-lanzalo
+  lanzalo
 ```
 
 O también:
 ```bash
-launch_it
+  launch_it
 ```
 
 ## Ejemplo de uso

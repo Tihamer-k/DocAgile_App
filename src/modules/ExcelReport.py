@@ -39,12 +39,28 @@ class ExcelReport:
                 writer.close()
                 print(Fore.GREEN + "¡Data guardada!" + Style.RESET_ALL)
                 modify_excel_report(final_out_path)
-
-                # Sin importar si se puede abrir o no el Excel creado mostramos el reporte en la terminal
-                header_list = self.data_obj.columns
-                print(tabulate(self.data_obj, headers=header_list, tablefmt="fancy_grid"))
+                try_open(final_out_path, self.data_obj)
             except (OSError, IOError) as e:
                 print(Fore.RED + "Problema guardando la data: " + Style.RESET_ALL + e)
+
+
+def try_open(final_out_path, data_obj):
+    """
+    Tries to open the Excel report at the specified path. If it fails, it prints the report in the terminal.
+
+    :param final_out_path: The path of the Excel report to be opened.
+    :param data_obj: pandas.DataFrame: The data object containing the report data.
+    :return: None
+    """
+    try:
+        print("Open Excel report: " + final_out_path)
+        os.startfile(final_out_path)
+    except Exception as e:
+        print("Error opening Excel report: " + str(e))
+        # Sin importar si se puede abrir o no el Excel creado mostramos el reporte en la terminal
+        header_list = data_obj.columns
+        print(tabulate(data_obj, headers=header_list, tablefmt="fancy_grid"))
+
 
 
 def modify_excel_report(final_out_path: str):
@@ -67,8 +83,6 @@ def modify_excel_report(final_out_path: str):
 
             ws.column_dimensions[letter].width = max_width + 1
         wb.save(final_out_path)
-        print("Open Excel report: " + final_out_path)
-        os.startfile(final_out_path)
-    except Exception as e:
         print("File saved at: " + final_out_path)
+    except Exception as e:
         print("Error modifying excel report: " + str(e))

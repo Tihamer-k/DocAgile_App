@@ -1,7 +1,7 @@
 colorama>=0.4.6
 pandas>=2.1.1
 setuptools>=68.1.2
-openpyxl>=3.2.0b1
+openpyxl>=3.1.5
 pyfiglet>=1.0.2
 tabulate>=0.9.0
 pytest>=8.3.5

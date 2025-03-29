@@ -20,7 +20,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='Fill_DocAgil_App',
-    version='0.2.4',
+    version='0.2.5',
     url='https://github.com/Tihamer-k/Fill_DocAgil_App',
     long_description=long_description,
     long_description_content_type='text/markdown',

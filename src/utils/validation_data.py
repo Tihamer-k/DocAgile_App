@@ -11,7 +11,7 @@ Functions:
         Modify and return a branch path parameter.
 
     valid_out_path(param: str) -> str:
-        Validate and return a file path.
+        validate and return a file path.
 
     valid_input(input_text: str) -> re.Match:
         Check if the input text matches the specified pattern.
@@ -20,7 +20,7 @@ Functions:
         Modify and return a parameter value.
 
     valid_diff(data: str) -> str:
-        Validate and return the input data.
+        validate and return the input data.
 
     final_out_path(out_path: str, output_filename: str) -> str:
         Return the final output path including the filename.
@@ -56,7 +56,8 @@ def branch_path(param):
     This method takes a parameter and returns a modified version of it.
 
     :param param: The input parameter which will be modified.
-    :return: The modified parameter if it is not an empty string, otherwise it returns "path no informado".
+    :return: The modified parameter if it is not an empty string,
+     otherwise it returns "path no informado".
     """
     res = param
     if res == "":
@@ -104,10 +105,11 @@ def valid_input(input_text):
 def valid_res(param):
     """
     :param param: a string containing a parameter value
-    :return: a modified string if the parameter contains "R090", otherwise the original string
+    :return: a modified string if the parameter contains "R090",
+     otherwise the original string
     """
     if param.__contains__("R090"):
-        return param.replace("R090    ", "R" + Settings.SPACE)
+        return param.replace("R090    ", "R" + settings_definitions.SPACE)
     else:
         return param
 
@@ -128,16 +130,20 @@ def valid_diff(data):
             return valid_res(data)
         else:
             print("\n¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
-            print("Debe iniciar con M, D, A, seguido por 7 espacios (o R090, seguido por 4 espacios) "
+            print("Debe iniciar con M, D, A, seguido por 7 espacios "
+                  "(o R090, seguido por 4 espacios) "
                   "y texto con o sin slash entre el. "
-                  "Finalizando con el nombre de el archivo junto con su tipo de archivo (si lo tiene).")
+                  "Finalizando con el nombre de el archivo junto con su tipo de archivo "
+                  "(si lo tiene)."
+                  "\nEjemplo: M       /path/to/file.txt o R090    /path/to/file.txt\n")
             print("También puedes escribir 'Exit' para finalizar.")
             data = input(Style.RESET_ALL + "\nIntenta de nuevo:\n")
 
 
 def final_out_path(out_path, output_filename):
     """
-    :param out_path: The specified output path where the file will be saved. If this parameter is None or the value is "doc_agil", a default output path will be used.
+    :param out_path: The specified output path where the file will be saved. If this parameter
+     is None or the value is "doc_agil", a default output path will be used.
     :param output_filename: The name of the output file.
     :return: The final output path, including the filename, where the file will be saved.
     """

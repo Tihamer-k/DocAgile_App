@@ -15,14 +15,13 @@ Functions:
 """
 
 import os
-import subprocess
 
 from colorama import Fore, Style
 from openpyxl.reader.excel import load_workbook
 import pandas as pd
 from pandas import ExcelWriter
 from tabulate import tabulate
-import src.utils.settings_definitions as Settings
+import src.utils.settings_definitions as settings
 
 
 class ExcelReport:
@@ -49,8 +48,8 @@ class ExcelReport:
         :type final_out_path: str
         :return: None
         """
-        if len(Settings.DIFF_DATA) > 0:
-            self.data_obj = pd.DataFrame(Settings.DIFF_DATA)
+        if len(settings.DIFF_DATA) > 0:
+            self.data_obj = pd.DataFrame(settings.DIFF_DATA)
             # df = pd.DataFrame(s.COMPONENT)
             try:
                 # validar si existe o no el folder de salida:
@@ -78,8 +77,7 @@ def try_open(final_out_path, data_obj):
     """
     try:
         print("Open Excel report: " + final_out_path)
-        #os.startfile(final_out_path)
-        subprocess.call(['open', final_out_path])
+        os.startfile(final_out_path)
     except (OSError, IOError) as e:
         print("Error opening Excel report: " + str(e))
         # Sin importar si se puede abrir o no el Excel creado mostramos el reporte en la terminal

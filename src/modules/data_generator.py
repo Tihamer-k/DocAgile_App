@@ -7,12 +7,12 @@ Classes:
     DataGenerator: Class to generate data for Excel files.
 
 Functions:
-    obtain_diff: Function to obtain the difference values and add them to the Settings.LIST.
+    obtain_diff: Function to obtain the difference values and add them to the settings.LIST.
 """
 
 from colorama import Fore, Style
-import src.utils.validation_data as Validate
-import src.utils.settings_definitions as Settings
+import src.utils.validation_data as validate
+import src.utils.settings_definitions as settings
 
 class DataGenerator:
     """
@@ -61,11 +61,11 @@ class DataGenerator:
     def get_output_path(self, path, output_filename):
         if path == "":
             path = "doc_agil"
-        self.out_path = Validate.final_out_path(path, output_filename)
+        self.out_path = validate.final_out_path(path, output_filename)
         return self.out_path
 
     def get_branch_name(self, branch_name):
-        self.branch = Validate.branch_path(branch_name)
+        self.branch = validate.branch_path(branch_name)
 
     def generate_data(self):
         input_text = obtain_diff()
@@ -89,7 +89,7 @@ class DataGenerator:
                     dato2 = dato[1].split("/")
                     dato2_size = len(dato2)
                     componente = dato2[dato2_size - 1]
-                estado = Validate.format_datatype(dato[0])
+                estado = validate.format_datatype(dato[0])
                 if '.' in componente:
                     dato3 = componente.split(".")
                     nombre_componente = dato3[0]
@@ -97,7 +97,7 @@ class DataGenerator:
                 else:
                     nombre_componente = componente
                     tipo_componente = "-"
-                Settings.DIFF_DATA.append(
+                settings.DIFF_DATA.append(
                     {
                         'Componente con Tipo Archivo': componente,
                         'Nombre Componente': nombre_componente,
@@ -117,14 +117,14 @@ class DataGenerator:
 
 def obtain_diff():
     """
-    Obtain the difference values and add them to the Settings.LIST.
+    Obtain the difference values and add them to the settings.LIST.
 
-    :return: The updated Settings.LIST.
+    :return: The updated settings.LIST.
     """
     while True:
-        data = Validate.valid_diff(input())
+        data = validate.valid_diff(input())
         if 'Exit' == data:
             break
         if data is not None:
-            Settings.LIST.append(data.replace(Settings.SPACE, "###"))
-    return Settings.LIST
+            settings.LIST.append(data.replace(settings.SPACE, "###"))
+    return settings.LIST

@@ -9,7 +9,7 @@ Classes:
 """
 
 from colorama import Fore, Style
-import src.utils.validation_data as Validate
+import src.utils.validation_data as validate
 
 class CommandGenerator:
     """
@@ -45,7 +45,7 @@ class CommandGenerator:
 
     def get_branch_names(self):
         message = "¿Desea generar su comando git diff? [s|n]: "
-        res: bool = Validate.get_response(message)
+        res: bool = validate.get_response(message)
         if res:
             path_left = input("Ingrese rama estable: ")
             path_right = input("Ingrese rama modificada: ")

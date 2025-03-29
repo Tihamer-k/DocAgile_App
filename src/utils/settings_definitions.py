@@ -1,5 +1,5 @@
 """
-Settings Definitions Module
+settings definitions module
 
 This module contains global settings and constants used throughout the project.
 

@@ -1,7 +1,16 @@
+"""
+This module contains unit tests for the ExcelReport class.
+
+Tests:
+    - test_modify_excel_report: Verifies the modification of an Excel report.
+"""
+
 import os
 
-
 def test_modify_excel_report(mocker):
+    """
+    Verifies the modification of an Excel report using a mocker.
+    """
     mocker.patch('openpyxl.reader.excel.load_workbook')
     mocker.patch('os.startfile')
     project_path = os.getcwd()

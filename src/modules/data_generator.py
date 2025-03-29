@@ -11,8 +11,8 @@ Functions:
 """
 
 from colorama import Fore, Style
-import src.utils.ValidationData as Validate
-import src.utils.Settings as Settings
+import src.utils.validation_data as Validate
+import src.utils.settings_definitions as Settings
 
 class DataGenerator:
     """

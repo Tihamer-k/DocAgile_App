@@ -32,7 +32,7 @@ Functions:
 import os
 import re
 from colorama import Fore, Style
-from src.utils import Settings
+from src.utils import settings_definitions
 
 
 def format_datatype(param):

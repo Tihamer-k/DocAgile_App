@@ -9,7 +9,7 @@ Classes:
 """
 
 from colorama import Fore, Style
-import src.utils.ValidationData as Validate
+import src.utils.validation_data as Validate
 
 class CommandGenerator:
     """

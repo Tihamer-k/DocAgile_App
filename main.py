@@ -4,9 +4,9 @@ Copyright 2024 Tihamer Aldana.
 from colorama import Fore, Style
 
 import pyfiglet as pf
-from src.modules.CommandGenerator import CommandGenerator
-from src.modules.DataGenerator import DataGenerator
-from src.modules.ExcelReport import ExcelReport
+from src.modules.command_generator import CommandGenerator
+from src.modules.data_generator import DataGenerator
+from src.modules.excel_report import ExcelReport
 
 OPTIONAL_PRESS_ENTER = "(opcional, presiona enter para continuar):\n"
 

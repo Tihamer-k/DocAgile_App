@@ -18,7 +18,7 @@ def test_modify_excel_report(mocker):
     output_filename = "prueba3"
     route = f"{project_path}\\resources\\{out_path}\\{output_filename}.xlsx"
 
-    from src.modules.ExcelReport import modify_excel_report
+    from src.modules.excel_report import modify_excel_report
     modify_excel_report(route)
 
     assert True

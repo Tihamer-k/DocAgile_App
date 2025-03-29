@@ -9,8 +9,8 @@ Fixtures:
 
 import pytest
 from unittest.mock import Mock
-from src.modules.DataGenerator import DataGenerator
-from src.modules.ExcelReport import ExcelReport
+from src.modules.data_generator import DataGenerator
+from src.modules.excel_report import ExcelReport
 
 
 @pytest.fixture

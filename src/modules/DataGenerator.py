@@ -1,8 +1,18 @@
-from colorama import Fore, Style
+"""
+Module DataGenerator
 
+This module contains the DataGenerator class, which is responsible for generating data for Excel files.
+
+Classes:
+    DataGenerator: Class to generate data for Excel files.
+
+Functions:
+    obtain_diff: Function to obtain the difference values and add them to the Settings.LIST.
+"""
+
+from colorama import Fore, Style
 import src.utils.ValidationData as Validate
 import src.utils.Settings as Settings
-
 
 class DataGenerator:
     """

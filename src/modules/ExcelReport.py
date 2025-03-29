@@ -1,16 +1,31 @@
-import os
+"""
+Module ExcelReport
 
+This module contains the ExcelReport class, which is responsible for generating and modifying Excel reports.
+
+Classes:
+    ExcelReport: Class to generate and modify Excel reports.
+
+Functions:
+    try_open(final_out_path: str, data_obj: pandas.DataFrame) -> None:
+        Tries to open the Excel report at the specified path. If it fails, it prints the report in the terminal.
+
+    modify_excel_report(final_out_path: str) -> None:
+        Modifies the width of columns in an Excel report based on the content length of each cell.
+"""
+
+import os
 from colorama import Fore, Style
 from openpyxl.reader.excel import load_workbook
-
-import src.utils.Settings as Settings
 import pandas as pd
 from pandas import ExcelWriter
 from tabulate import tabulate
+import src.utils.Settings as Settings
 
 
 class ExcelReport:
-    """ExcelReport Class
+    """
+    ExcelReport Class
 
     This class represents a report generator for Excel files.
 
@@ -20,12 +35,18 @@ class ExcelReport:
     Methods:
         generate_excel_report(final_out_path: str) -> None:
             Generates an Excel report and saves it to the specified path.
-
     """
     def __init__(self):
         self.data_obj = None
 
     def generate_excel_report(self, final_out_path: str):
+        """
+        Generates an Excel report and saves it to the specified path.
+
+        :param final_out_path: The path where the Excel report will be saved.
+        :type final_out_path: str
+        :return: None
+        """
         if len(Settings.DIFF_DATA) > 0:
             self.data_obj = pd.DataFrame(Settings.DIFF_DATA)
             # df = pd.DataFrame(s.COMPONENT)

@@ -1,7 +1,37 @@
+"""
+ValidationData Module
+
+This module contains functions for validating and formatting data.
+
+Functions:
+    format_datatype(param: str) -> str:
+        Format a datatype parameter.
+
+    branch_path(param: str) -> str:
+        Modify and return a branch path parameter.
+
+    valid_out_path(param: str) -> str:
+        Validate and return a file path.
+
+    valid_input(input_text: str) -> re.Match:
+        Check if the input text matches the specified pattern.
+
+    valid_res(param: str) -> str:
+        Modify and return a parameter value.
+
+    valid_diff(data: str) -> str:
+        Validate and return the input data.
+
+    final_out_path(out_path: str, output_filename: str) -> str:
+        Return the final output path including the filename.
+
+    get_response(message: str) -> bool:
+        Ask the user for a response and return their response.
+"""
+
 import os
 import re
 from colorama import Fore, Style
-
 from src.utils import Settings
 
 

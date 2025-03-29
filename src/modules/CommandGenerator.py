@@ -1,7 +1,15 @@
+"""
+Module CommandGenerator
+
+This module contains the CommandGenerator class, which is used to generate git diff commands
+based on the branch names provided by the user.
+
+Classes:
+    CommandGenerator: Class to generate git diff commands.
+"""
+
 from colorama import Fore, Style
-
 import src.utils.ValidationData as Validate
-
 
 class CommandGenerator:
     """
@@ -45,7 +53,8 @@ class CommandGenerator:
             print(
                 f"¡Acá está tú comando!\n" +
                 Fore.GREEN + f" {command} \n " +
-                Style.RESET_ALL + f"Ejecutalo en la ubicación de tú proyecto y vuelve con la respuesta copiada.")
+                Style.RESET_ALL +
+                f"Ejecutalo en la ubicación de tú proyecto y vuelve con la respuesta copiada.")
             print("\n")
         else:
             print("\n")

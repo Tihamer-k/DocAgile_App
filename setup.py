@@ -12,15 +12,17 @@ Attributes:
 
 from setuptools import setup, find_packages
 
+import version
+
 with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
-with open('requirements.txt') as f:
+with open('requirements.txt', 'r', encoding='utf-8') as f:
     install_requires = f.read().splitlines()
 
 setup(
     name='Fill_DocAgil_App',
-    version='0.2.8',
+    version=version.__version__,
     url='https://github.com/Tihamer-k/Fill_DocAgil_App',
     long_description=long_description,
     long_description_content_type='text/markdown',

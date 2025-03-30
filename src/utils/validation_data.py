@@ -84,8 +84,6 @@ def valid_out_path(param):
             return match_unix.group()
         elif match_windows:
             return match_windows.group()
-        else:
-            return None
     else:
         return param
 

@@ -1,14 +1,16 @@
 """
 Module ExcelReport
 
-This module contains the ExcelReport class, which is responsible for generating and modifying Excel reports.
+This module contains the ExcelReport class,
+which is responsible for generating and modifying Excel reports.
 
 Classes:
     ExcelReport: Class to generate and modify Excel reports.
 
 Functions:
     try_open(final_out_path: str, data_obj: pandas.DataFrame) -> None:
-        Tries to open the Excel report at the specified path. If it fails, it prints the report in the terminal.
+        Tries to open the Excel report at the specified path. If it fails,
+        it prints the report in the terminal.
 
     modify_excel_report(final_out_path: str) -> None:
         Modifies the width of columns in an Excel report based on the content length of each cell.
@@ -37,8 +39,8 @@ class ExcelReport:
         generate_excel_report(final_out_path: str) -> None:
             Generates an Excel report and saves it to the specified path.
     """
-    def __init__(self):
-        self.data_obj = None
+    def __init__(self, data_obj=None):
+        self.data_obj = data_obj
 
     def generate_excel_report(self, final_out_path: str):
         """
@@ -65,6 +67,14 @@ class ExcelReport:
             except (OSError, IOError) as e:
                 print(Fore.RED + "Problema guardando la data: " + Style.RESET_ALL + e)
 
+def set_data(self, data_obj: pd.DataFrame):
+    """
+    Sets the data object for the Excel report.
+
+    Args:
+        data_obj (pandas.DataFrame): The data object containing the report data.
+    """
+    self.data_obj = data_obj
 
 def try_open(final_out_path, data_obj):
     """
@@ -102,10 +112,10 @@ def modify_excel_report(final_out_path: str):
 
             for row_num in range(1, ws.max_row + 1):
                 if len(ws[f"{letter}{row_num}"].value) > max_width:
-                    max_width = len(ws[f"{letter}{row_num}"].value)
+                    max_width = max(max_width, len(ws[f'{letter}{row_num}'].value))
 
             ws.column_dimensions[letter].width = max_width + 1
         wb.save(final_out_path)
         print("File saved at: " + final_out_path)
-    except Exception as e:
+    except (OSError, IOError) as e:
         print("Error modifying excel report: " + str(e))

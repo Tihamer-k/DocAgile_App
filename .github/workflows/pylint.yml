@@ -21,7 +21,8 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        pylint $(git ls-files '*.py') > pylint_output.txt
+        cat pylint_output.txt
     - name: Test with pytest
       run: |
         pytest

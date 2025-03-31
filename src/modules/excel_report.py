@@ -87,7 +87,7 @@ def try_open(final_out_path, data_obj):
     """
     try:
         print("Open Excel report: " + final_out_path)
-        os.startfile(final_out_path)
+        os.system(f'start "" "{final_out_path}"')
     except (OSError, IOError) as e:
         print("Error opening Excel report: " + str(e))
         # Sin importar si se puede abrir o no el Excel creado mostramos el reporte en la terminal

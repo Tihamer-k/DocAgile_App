@@ -26,7 +26,7 @@ from tabulate import tabulate
 import src.utils.settings_definitions as settings
 
 
-class ExcelReport:
+class ExcelReport: # pylint: disable=too-few-public-methods
     """
     ExcelReport Class
 

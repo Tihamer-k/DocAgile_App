@@ -58,7 +58,6 @@ class ExcelReport: # pylint: disable=too-few-public-methods
                 os.makedirs(os.path.dirname(final_out_path), exist_ok=True)
 
                 writer = ExcelWriter(final_out_path, engine=None)
-                # df.to_excel(writer, sheet_name="hoja1", index=False, startrow=2, startcol=2)
                 self.data_obj.to_excel(writer, sheet_name="hoja1", index=False)
                 writer.close()
                 print(Fore.GREEN + "¡Data guardada!" + Style.RESET_ALL)
@@ -72,6 +71,7 @@ def set_data(self, data_obj: pd.DataFrame):
     Sets the data object for the Excel report.
 
     Args:
+        self: The instance of the class.
         data_obj (pandas.DataFrame): The data object containing the report data.
     """
     self.data_obj = data_obj
@@ -81,7 +81,7 @@ def try_open(final_out_path, data_obj):
     Tries to open the Excel report at the specified path. If it fails,
      it prints the report in the terminal.
 
-    :param final_out_path: The path of the Excel report to be opened.
+    :param final_out_path: The path of the Excel reports to be opened.
     :param data_obj: pandas.DataFrame: The data object containing the report data.
     :return: None
     """

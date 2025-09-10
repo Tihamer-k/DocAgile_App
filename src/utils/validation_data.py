@@ -74,7 +74,7 @@ def valid_out_path(param):
     if param != "":
         # RegExp to match Mac/Linux file paths
         mac_linux_regexp = r'^(\/[^/ ]*)+\/?$'
-        # Regexp to match Windows file path
+        # Regexp to match a Windows file path
         windows_regexp = r'^[a-zA-Z]:\\(?:[^\\/:*?"<>|\r\n]+\\)*[^\\/:*?"<>|\r\n]*$'
 
         match_unix = re.search(mac_linux_regexp, param)
@@ -101,7 +101,7 @@ def valid_input(input_text):
 
 def valid_res(param):
     """
-    :param param: a string containing a parameter value
+    :param param: a string containing a parameter values
     :return: a modified string if the parameter contains "R090",
      otherwise the original string
     """

@@ -8,12 +8,12 @@ Classes:
     DataGenerator: Class to generate data for Excel files.
 
 Functions:
-    obtain_diff: Function to obtain the difference values and add them to the settings.LIST.
+    obtain_diff: Function to get the different values and add them to the settings.LIST.
 """
 
 from colorama import Fore, Style
-import src.utils.validation_data as validate
-import src.utils.settings_definitions as settings
+from src.utils import validation_data as validate
+from src.utils import settings_definitions as settings
 
 class DataGenerator:
     """
@@ -95,16 +95,8 @@ class DataGenerator:
 
     def generate_data(self):
         """
-        Generates the data for the Excel file.
-
-        This method processes the git diff input, extracts relevant information,
-        and appends it to the settings.DIFF_DATA list. It handles renamed files
-        and formats the data accordingly.
-
-        Returns:
-            None
+        Genera los datos para el archivo Excel.
         """
-        input_text = obtain_diff()
         input_text = obtain_diff()
         default_values = {
             "renamed": "N/A",
@@ -118,22 +110,23 @@ class DataGenerator:
                     default_values["renamed_path"] = dato_new[1]
                     ruta = dato_new[0].replace("R###", "")
                     dato2 = dato_new[0].split("/")
-                    dato2_size = len(dato2)
-                    componente = dato2[dato2_size - 1]
+                    componente = dato2[len(dato2) - 1]
                     dato_renamed = dato_new[1].split("/")
-                    renamed_size = len(dato_renamed)
-                    default_values["renamed"] = dato_renamed[renamed_size - 1]
+                    default_values["renamed"] = dato_renamed[len(dato_renamed) - 1]
                 else:
                     ruta = dato[1]
                     dato2 = dato[1].split("/")
-                    dato2_size = len(dato2)
-                    componente = dato2[dato2_size - 1]
+                    componente = dato2[len(dato2) - 1]
                 estado = validate.format_datatype(dato[0])
-                if '.' in componente:
-                    nombre_componente, tipo_componente = componente.split(".")
+
+                # Manejo mejorado de la división del componente
+                partes_componente = componente.split(".", 1)
+                if len(partes_componente) == 2:
+                    nombre_componente, tipo_componente = partes_componente
                 else:
                     nombre_componente = componente
                     tipo_componente = "-"
+
                 settings.DIFF_DATA.append(
                     {
                         'Componente con Tipo Archivo': componente,
@@ -154,7 +147,7 @@ class DataGenerator:
 
 def obtain_diff():
     """
-    Obtain the difference values and add them to the settings.LIST.
+    Get the difference values and add them to the settings.LIST.
 
     :return: The updated settings.LIST.
     """

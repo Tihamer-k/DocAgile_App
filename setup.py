@@ -34,8 +34,8 @@ setup(
     python_requires='>=3.10',
     entry_points={
         'console_scripts': [
-            'launch_it = main:run_project',
-            'lanzalo = main:run_project',
+            'launch_it = src.main:run_project',
+            'lanzalo = src.main:run_project',
         ],
     },
 )

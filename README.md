@@ -42,26 +42,25 @@ Para actualizar pip:
 > `python` o `python3`. En este caso se usó python 3.9
 
 ## Libs necesarias para usar este proyecto: 
-Lo instalaremos todo en conjunto al instalar `setup.py` ya que los toma del archivo `requeriments.txt`.
+Los requisitos se instalarán automáticamente al instalar el proyecto, ya que se toman del archivo `requirements.txt`.
 
 ## Para iniciar el proyecto en la terminal:
 
-Primero hay que ubicarse en el proyecto en la terminal, luego de eso continua con los siguientes pasos:
+Primero hay que ubicarse en la carpeta raíz del proyecto en la terminal, luego de eso continúa con los siguientes pasos:
 
-#### Para poder ejecutar el setup.py:
-En caso de querer instalar a nivel de usuario se añade al final del comando `--user`, 
-de lo contrario se instalará a nivel global.
+#### Instalar setuptools (si no lo tienes actualizado):
 ```bash
   pip install -U setuptools
 ```
-- Luego de instalar el setuptools procedemos con lo siguiente
 
-#### Instalar setup.py modo develop:
+#### Instalar el proyecto en modo editable (desarrollo):
 ```bash
-  python setup.py develop
+  pip install -e .
 ```
+> Si deseas instalar solo para el usuario actual, puedes añadir `--user` al final del comando.
+
 - Tras realizar lo anterior ya se puede iniciar el proyecto desde la terminal sin necesidad de ubicar la ruta de este, 
-únicamente abrimos una nueva terminal y ejecutamos:
+únicamente abre una nueva terminal y ejecuta:
 
 ```bash
   lanzalo

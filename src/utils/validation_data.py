@@ -1,8 +1,38 @@
+"""
+ValidationData Module
+
+This module contains functions for validating and formatting data.
+
+Functions:
+    format_datatype(param: str) -> str:
+        Format a datatype parameter.
+
+    branch_path(param: str) -> str:
+        Modify and return a branch path parameter.
+
+    valid_out_path(param: str) -> str:
+        validate and return a file path.
+
+    valid_input(input_text: str) -> re.Match:
+        Check if the input text matches the specified pattern.
+
+    valid_res(param: str) -> str:
+        Modify and return a parameter value.
+
+    valid_diff(data: str) -> str:
+        validate and return the input data.
+
+    final_out_path(out_path: str, output_filename: str) -> str:
+        Return the final output path including the filename.
+
+    get_response(message: str) -> bool:
+        Ask the user for a response and return their response.
+"""
+
 import os
 import re
 from colorama import Fore, Style
-
-from src.utils import Settings
+from src.utils import settings_definitions # pylint: disable=import-error
 
 
 def format_datatype(param):
@@ -26,7 +56,8 @@ def branch_path(param):
     This method takes a parameter and returns a modified version of it.
 
     :param param: The input parameter which will be modified.
-    :return: The modified parameter if it is not an empty string, otherwise it returns "path no informado".
+    :return: The modified parameter if it is not an empty string,
+     otherwise it returns "path no informado".
     """
     res = param
     if res == "":
@@ -43,20 +74,16 @@ def valid_out_path(param):
     if param != "":
         # RegExp to match Mac/Linux file paths
         mac_linux_regexp = r'^(\/[^/ ]*)+\/?$'
-        # Regexp to match Windows file path
+        # Regexp to match a Windows file path
         windows_regexp = r'^[a-zA-Z]:\\(?:[^\\/:*?"<>|\r\n]+\\)*[^\\/:*?"<>|\r\n]*$'
 
         match_unix = re.search(mac_linux_regexp, param)
         match_windows = re.search(windows_regexp, param)
 
-        if match_unix:
-            return match_unix.group()
-        elif match_windows:
+        if match_windows:
             return match_windows.group()
-        else:
-            return None
-    else:
-        return param
+        return match_unix.group()
+    return param
 
 
 def valid_input(input_text):
@@ -69,17 +96,18 @@ def valid_input(input_text):
     regexp = r'(M|A|R|D|R090)\s{4}|\s{7}[\w/.-]+|Exit'
     if re.match(regexp, input_text):
         return re.search(regexp, input_text)
+    return None
 
 
 def valid_res(param):
     """
-    :param param: a string containing a parameter value
-    :return: a modified string if the parameter contains "R090", otherwise the original string
+    :param param: a string containing a parameter values
+    :return: a modified string if the parameter contains "R090",
+     otherwise the original string
     """
-    if param.__contains__("R090"):
-        return param.replace("R090    ", "R" + Settings.SPACE)
-    else:
-        return param
+    if "R090" in param:
+        return param.replace("R090    ", "R" + settings_definitions.SPACE)
+    return param
 
 
 def valid_diff(data):
@@ -96,33 +124,36 @@ def valid_diff(data):
         input_txt = valid_input(data)
         if input_txt:
             return valid_res(data)
-        else:
-            print("\n¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
-            print("Debe iniciar con M, D, A, seguido por 7 espacios (o R090, seguido por 4 espacios) "
-                  "y texto con o sin slash entre el. "
-                  "Finalizando con el nombre de el archivo junto con su tipo de archivo (si lo tiene).")
-            print("También puedes escribir 'Exit' para finalizar.")
-            data = input(Style.RESET_ALL + "\nIntenta de nuevo:\n")
+        print("\n¡Formato de entrada no es correcto!" + Fore.RED + f" ({data})\n")
+        print("Debe iniciar con M, D, A, seguido por 7 espacios "
+              "(o R090, seguido por 4 espacios) "
+              "y texto con o sin slash entre el. "
+              "Finalizando con el nombre de el archivo junto con su tipo de archivo "
+              "(si lo tiene)."
+              "\nEjemplo: M       /path/to/file.txt o R090    /path/to/file.txt\n")
+        print("También puedes escribir 'Exit' para finalizar.")
+        data = input(Style.RESET_ALL + "\nIntenta de nuevo:\n")
+    return ""
 
 
-def final_out_path(out_path, output_filename):
+def final_out_path(out_path, output_filename):  # pylint: disable=inconsistent-return-statements
     """
-    :param out_path: The specified output path where the file will be saved. If this parameter is None or the value is "doc_agil", a default output path will be used.
+    :param out_path: The specified output path where the file will be saved. If this parameter
+     is None or the value is "doc_agil", a default output path will be used.
     :param output_filename: The name of the output file.
     :return: The final output path, including the filename, where the file will be saved.
     """
     x = False
     project_path = os.getcwd()
-    if out_path == "doc_agil" or out_path is None:
+    if out_path == "doc_agil" or out_path is None: # pylint: disable=no-else-return
         if out_path is None:
             out_path = "doc_agil"
-        # print(f"{project_path}\\resources\\{out_path}\\{output_filename}.xlsx")
         print(Fore.GREEN + "¡Ruta default añadida!\n" + Style.RESET_ALL)
         return f"{project_path}\\resources\\{out_path}\\{output_filename}.xlsx"
     else:
         while not x:
             data = valid_out_path(out_path)
-            if data:
+            if data: # pylint: disable=no-else-return
                 print(Fore.GREEN + "¡Ruta indicada guardada!\n" + Style.RESET_ALL)
                 return f"{data}\\{output_filename}.xlsx"
             elif data == "":
@@ -131,7 +162,7 @@ def final_out_path(out_path, output_filename):
             else:
                 print("¡Formato de ruta no es correcto!")
                 out_path = input("Ingresa la ruta donde guardarás el archivo (opcional):\n")
-
+        return None
 
 def get_response(message):
     """
@@ -146,8 +177,9 @@ def get_response(message):
     while not x:
         if res == 's':
             return True
-        elif res == 'n':
+        if res == 'n': # pylint: disable=no-else-return
             return False
         else:
             print("¡Respuesta ingresada no es correcta!" + Fore.RED + f" ({res})\n")
             res = input(Style.RESET_ALL + "\nIntenta de nuevo [s|n]:\n").lower()
+    return None

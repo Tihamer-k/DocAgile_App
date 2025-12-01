@@ -3,5 +3,5 @@
 build/*
 dist/*
 Fill_DocAgil_App.egg-info/*
-/resources/doc_agil/*
+/src/resources/doc_agil/*
 *.pyc
